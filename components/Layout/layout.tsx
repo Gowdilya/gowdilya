@@ -3,7 +3,7 @@ import Image from "next/";
 import styles from "./layout.module.css";
 import utilStyles from "../../styles/utils.module.css";
 import Link from "next/link";
-import  Navbar  from "../NavBar/Navbar";
+import  Navbar  from "../StyledNavBar/Navbar";
 
 
 const name = "Gowdilya";

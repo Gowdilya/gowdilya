@@ -14,7 +14,7 @@ export default function Home() {
         <Image
           priority
           src="/images/profile.jpg"
-          className={utilStyles.borderCircle}
+          className={"-z-10"}
           height={144}
           width={144}
           alt={"Gowdilya"}
