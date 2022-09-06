@@ -4,12 +4,11 @@ import { useState } from "react";
 import styled, { css } from "styled-components";
 import Image from "next/image";
 
-type BackgroundColour = "bg-slate-300" | "bg-orange-600" | "bg-green-500";
-type TextColour = "text-black" | "text-red-200";
+type TextColor = "text-black" | "text-red-200";
 
 export type NavBarProps = {
-  bgColour: BackgroundColour;
-  textColour: TextColour;
+  bgColor: String;
+  textColor: TextColor;
 };
 
 const baseSpan = css`
@@ -95,19 +94,19 @@ const StyledNav = styled.nav`
   padding: 1rem; /* 16px */
   height: 5rem; /* 80px */
   display: flex;
-  background-color: #ea580c;
+  background-color: ${(props) => props.color};
 `;
 
-export default function Navbar({ bgColour, textColour }: NavBarProps) {
+export default function Navbar({ bgColor, textColor }: NavBarProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <StyledNav>
+    <StyledNav color={bgColor}>
       <MobileNav
         open={open}
         setOpen={setOpen}
-        bgColour={bgColour}
-        textColour={textColour}
+        bgColor={bgColor}
+        textColor={textColor}
       />
       <LogoContainer>
         <a href="/">
@@ -131,10 +130,10 @@ export default function Navbar({ bgColour, textColour }: NavBarProps) {
           <BottomSpan open={open} />
         </HamBurgerButton>
         <TopNav>
-          <NavLink to="/contact" textColour={textColour}>
+          <NavLink to="/contact" textColor={textColor}>
             CONTACT
           </NavLink>
-          <NavLink to="/about" textColour={textColour}>
+          <NavLink to="/about" textColor={textColor}>
             ABOUT
           </NavLink>
         </TopNav>

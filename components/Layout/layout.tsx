@@ -3,8 +3,7 @@ import Image from "next/";
 import styles from "./layout.module.css";
 import utilStyles from "../../styles/utils.module.css";
 import Link from "next/link";
-import  Navbar  from "../StyledNavBar/Navbar";
-
+import Navbar from "../StyledNavBar/Navbar";
 
 const name = "Gowdilya";
 export const siteTitle = "Next.js Sample Website";
@@ -27,7 +26,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Navbar bgColour={"bg-orange-600"} textColour={"text-black"}></Navbar>
+      <Navbar bgColor={"#ea580c"} textColor={"text-black"}></Navbar>
       <div className={styles.inner}>
         {/* <header className={styles.header}>
           {home ? (
