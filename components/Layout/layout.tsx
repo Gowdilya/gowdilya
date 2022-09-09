@@ -4,11 +4,15 @@ import styles from "./layout.module.css";
 import utilStyles from "../../styles/utils.module.css";
 import Link from "next/link";
 import Navbar from "../StyledNavBar/Navbar";
+import useColorStore from "../../colorStore";
 
 const name = "Gowdilya";
 export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home }) {
+  const color1 = useColorStore((state) => state.color1);
+  const color2 = useColorStore((state) => state.color2);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -26,43 +30,8 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Navbar bgColor={"#ea580c"} textColor={"text-black"}></Navbar>
+      <Navbar bgColor={color1} textColor={color2}></Navbar>
       <div className={styles.inner}>
-        {/* <header className={styles.header}>
-          {home ? (
-            <>
-              <Image
-                priority
-                src="/images/profile.jpg"
-                className={utilStyles.borderCircle}
-                height={144}
-                width={144}
-                alt={name}
-              />
-              <h1 className={utilStyles.heading2Xl}>{name}</h1>
-            </>
-          ) : (
-            <>
-              <Link href="/">
-                <a>
-                  <Image
-                    priority
-                    src="/images/profile.jpg"
-                    className={utilStyles.borderCircle}
-                    height={108}
-                    width={108}
-                    alt={name}
-                  />
-                </a>
-              </Link>
-              <h2 className={utilStyles.headingLg}>
-                <Link href="/">
-                  <a className={utilStyles.colorInherit}>{name}</a>
-                </Link>
-              </h2>
-            </>
-          )}
-        </header> */}
         <main>{children}</main>
         {!home && (
           <div className={styles.backToHome}>

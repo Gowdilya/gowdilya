@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/Layout/layout.js"  ],
+, "components/Layout/layout.js", "pages/colour.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -4,15 +4,13 @@ import { useState } from "react";
 import styled, { css } from "styled-components";
 import Image from "next/image";
 
-type TextColor = "text-black" | "text-red-200";
-
 export type NavBarProps = {
   bgColor: String;
-  textColor: TextColor;
+  textColor: String;
 };
 
 const baseSpan = css`
-  background-color: rgb(0 0 0);
+  background-color: ${(props) => props.color};
   height: 0.25rem; /* 4px */
   width: 100%;
   border-radius: 0.5rem; /* 8px */
@@ -125,11 +123,14 @@ export default function Navbar({ bgColor, textColor }: NavBarProps) {
             setOpen(!open);
           }}
         >
-          <TopSpan open={open} />
-          <MidSpan open={open} />
-          <BottomSpan open={open} />
+          <TopSpan open={open} color={textColor} />
+          <MidSpan open={open} color={textColor} />
+          <BottomSpan open={open} color={textColor} />
         </HamBurgerButton>
         <TopNav>
+          <NavLink to="/colour" textColor={textColor}>
+            COLOUR
+          </NavLink>
           <NavLink to="/contact" textColor={textColor}>
             CONTACT
           </NavLink>

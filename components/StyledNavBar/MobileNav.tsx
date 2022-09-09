@@ -7,7 +7,13 @@ const NavAnchor = styled.a`
   margin: auto;
   margin-top: 1rem; /* 16px */
   margin-bottom: 1rem; /* 16px */
-  color: rgb(0 0 0);
+  color: ${(props) => props.color};
+`;
+const NavHeader = styled.a`
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+  font-weight: 600;
+  color: ${(props) => props.color};
 `;
 
 const ColDiv = styled.div`
@@ -51,12 +57,13 @@ export function MobileNav({ open, setOpen, bgColor, textColor }) {
       <NavTop bgColor={bgColor}>
         {" "}
         {/*logo container*/}
-        {/* <a className={`text-xl font-semibold + ${textColour}`} href="/">
+        <NavHeader color={textColor} href="/">
           Menu
-        </a> */}
+        </NavHeader>
       </NavTop>
       <ColDiv>
         <NavAnchor
+          color={textColor}
           href="/about"
           onClick={() =>
             setTimeout(() => {
@@ -67,6 +74,7 @@ export function MobileNav({ open, setOpen, bgColor, textColor }) {
           About
         </NavAnchor>
         <NavAnchor
+          color={textColor}
           href="/contact"
           onClick={() =>
             setTimeout(() => {
