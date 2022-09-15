@@ -13,6 +13,11 @@ export default function Layout({ children, home }) {
   const color1 = useColorStore((state) => state.color1);
   const color2 = useColorStore((state) => state.color2);
 
+  const NavStyle = {
+    bgColor: color1,
+    textColor: color2,
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -30,7 +35,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Navbar bgColor={color1} textColor={color2}></Navbar>
+      <Navbar {...NavStyle}></Navbar>
       <div className={styles.inner}>
         <main>{children}</main>
         {!home && (
