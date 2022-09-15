@@ -5,6 +5,10 @@ import styled, { css } from "styled-components";
 import Image from "next/image";
 
 export type NavBarProps = {
+  style: StyleProps;
+};
+
+export type StyleProps = {
   bgColor: String;
   textColor: String;
 };
@@ -95,16 +99,16 @@ const StyledNav = styled.nav`
   background-color: ${(props) => props.color};
 `;
 
-export default function Navbar({ bgColor, textColor }: NavBarProps) {
+export default function Navbar({ style }: NavBarProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <StyledNav color={bgColor}>
+    <StyledNav color={style.bgColor}>
       <MobileNav
         open={open}
         setOpen={setOpen}
-        bgColor={bgColor}
-        textColor={textColor}
+        bgColor={style.bgColor}
+        textColor={style.textColor}
       />
       <LogoContainer>
         <a href="/">
@@ -123,18 +127,18 @@ export default function Navbar({ bgColor, textColor }: NavBarProps) {
             setOpen(!open);
           }}
         >
-          <TopSpan open={open} color={textColor} />
-          <MidSpan open={open} color={textColor} />
-          <BottomSpan open={open} color={textColor} />
+          <TopSpan open={open} color={style.textColor} />
+          <MidSpan open={open} color={style.textColor} />
+          <BottomSpan open={open} color={style.textColor} />
         </HamBurgerButton>
         <TopNav>
-          <NavLink to="/colour" textColor={textColor}>
+          <NavLink to="/colour" textColor={style.textColor}>
             COLOUR
           </NavLink>
-          <NavLink to="/contact" textColor={textColor}>
+          <NavLink to="/contact" textColor={style.textColor}>
             CONTACT
           </NavLink>
-          <NavLink to="/about" textColor={textColor}>
+          <NavLink to="/about" textColor={style.textColor}>
             ABOUT
           </NavLink>
         </TopNav>

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { useState } from "react";
 
 const NavAnchor = styled.a`
   font-size: 1.25rem; /* 20px */
@@ -52,8 +53,30 @@ const NavTop = styled.div`
 `;
 
 export function MobileNav({ open, setOpen, bgColor, textColor }) {
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  // Only implementing swipe off for nav menu, since swipe on could interfere with intention of scrolling the page
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 150) {
+      setOpen(false);
+    }
+  };
   return (
-    <NavContainer open={open} bgColor={bgColor}>
+    <NavContainer
+      open={open}
+      bgColor={bgColor}
+      onTouchStart={(touchStartEvent) => handleTouchStart(touchStartEvent)}
+      onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
+      onTouchEnd={() => handleTouchEnd()}
+    >
       <NavTop bgColor={bgColor}>
         {" "}
         {/*logo container*/}
